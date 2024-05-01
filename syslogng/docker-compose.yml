@@ -1,0 +1,26 @@
+version: "3"
+services:
+  syslog-ng:
+    image: lscr.io/linuxserver/syslog-ng:latest
+    container_name: syslog-ng
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=Europe/Oslo
+    volumes:
+      - ./data:/config
+#      - ./data/log:/var/log #optional
+      - syslog:/var/log/external
+    ports:
+      - 514:5514/udp
+      - 601:6601/tcp
+      - 6514:6514/tcp
+    restart: unless-stopped
+    networks:
+      - monitor-net
+volumes:
+  syslog:
+    external: true
+networks:
+  monitor-net:
+    external: true

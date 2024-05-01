@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "aruba-ap-exporter"
+version = "0.1.0"
+description = "Export Aruba AP data from Aruba Central or Mobility Conductor to Prometheus"
+authors = ["datagutten <datagutten@datagutten.net>"]
+# readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+prometheus-client = "^0.20.0"
+requests = "^2.31.0"
+pycentral = "^1.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

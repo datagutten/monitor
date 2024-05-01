@@ -1,0 +1,35 @@
+apiVersion: 1
+datasources:
+  - uid: "NAV_API_Frogn"
+    orgId: 1
+    name: "NAV API Frogn"
+    type: "yesoreyeram-infinity-datasource"
+    url: ""
+    basicAuth: false
+    basicAuthUser: ""
+    isDefault: false
+    jsonData:
+      allowedHosts:
+        - 'http://nav.frogn.kommune.no'
+      global_queries:
+        - id: "alerts"
+          name: "Alerts"
+          query:
+            format: "table"
+            parser: "backend"
+            refId: "my-query-1"
+            root_selector: ""
+            source: "url"
+            type: "json"
+            url: "http://nav.frogn.kommune.no/api/1/alert/"
+            url_options:
+              data: ""
+              method: "GET"
+      httpHeaderName1: "Authorization"
+      oauthPassThru: false
+      auth_method: "none"
+      customHealthCheckEnabled: true
+      customHealthCheckUrl: "http://nav.frogn.kommune.no"
+    readOnly: false
+    secureJsonData:
+      httpHeaderValue1: Token ${NAV_API_TOKEN_FROGN}

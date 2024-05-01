@@ -1,0 +1,23 @@
+version: "3"
+services:
+# Whoami https://hub.docker.com/r/containous/whoami
+  whoami:
+    container_name: whoami
+    image: traefik/whoami # A container that exposes an API to show its IP address
+    pull_policy: always
+    restart: unless-stopped
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proxy
+      - traefik.http.routers.whoami.rule=Host(`${DOMAIN}`) && PathPrefix(`/whoami`)
+      - traefik.http.routers.whoami.middlewares=compress@file
+      - traefik.http.routers.whoami.tls=true
+      - traefik.http.routers.whoami.tls.certresolver=monitor
+      - org.label-schema.group=monitoring
+    environment:
+      - TZ=Europe/Oslo
+networks:
+  proxy:
+    external: true

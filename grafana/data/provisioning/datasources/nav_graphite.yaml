@@ -1,0 +1,35 @@
+# Configuration file version
+apiVersion: 1
+
+# List of data sources to delete from the database.
+#deleteDatasources:
+#  - name: Graphite
+#    orgId: 1
+
+# List of data sources to insert/update depending on what's
+# available in the database.
+datasources:
+  - name: Graphite NAV Frogn
+    type: graphite
+    access: proxy
+    uid: NAV_graphite_Frogn
+    url: http://nav.frogn.kommune.no:8000
+
+  - name: Graphite NAV Vestby
+    type: graphite
+    access: proxy
+    uid: NAV_graphite_Vestby
+    url: http://nav.vestby.kommune.no:8000
+
+  - name: Graphite NAV Ås
+    type: graphite
+    access: proxy
+    uid: NAV_graphite_Aas
+    url: http://nav.as.kommune.no:8000
+
+  - name: Graphite NAV Ås core
+    type: graphite
+    access: direct
+    uid: NAV_graphite_Aas_core
+    url: http://10.1.110.203:8000
+

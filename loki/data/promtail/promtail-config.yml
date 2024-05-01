@@ -1,0 +1,65 @@
+---
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+  - job_name: system
+    static_configs:
+    - targets:
+        - localhost
+      labels:
+        job: varlogs
+        __path__: /var/log/host/*log
+
+  - job_name: traefik
+    static_configs:
+    - targets:
+        - localhost
+      labels:
+        job: traefik
+        __path__: /var/log/external/traefik/*log
+
+  - job_name: externalsyslog
+    static_configs:
+    - targets:
+        - localhost
+      labels:
+        job: syslog
+        reject_old_samples: false
+#        reject_old_samples_max_age: 43800h
+        __path__: /var/log/external/syslogng/*log
+
+  - job_name: docker_scrape 
+    docker_sd_configs:
+      - host: unix:///var/run/docker.sock
+        refresh_interval: 5s
+    relabel_configs:
+      - source_labels: ['__meta_docker_container_name']
+        regex: '/(.*)'
+        target_label: 'container'
+
+#  - job_name: palo_logs
+#    static_configs:
+#      - targets:
+#          - localhost
+#        labels:
+#          job: palo_logs
+#          __path__: /var/log/external/syslogng/*log
+#
+#    pipeline_stages:
+##      - match:
+##          selector: "{name="
+#      - regex:
+#          expression: "(\\d),([\\d/]+\\s[\\d:]+),(\\d+),(\\w+),(\\w+),(\\d+),([\\d/]+\\s[\\d:]+),([\\d.]+),([\\d.]+),([\\d.]+),([\\d.]+),(.+?),(.+?),(\\w+),(\\w+),(.+?),(.+?),(.+?),"
+#          labels:
+#            unknown_1: "${1}"
+#            timestamp: "${2}"
+#            source: "${8}"
+#            destination: "${9}"

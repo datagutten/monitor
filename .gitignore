@@ -1,0 +1,4 @@
+.env
+acme.js*
+/grafana/data/grafana-data/
+/panos_exporter/data/panos_exporter.yaml

@@ -1,0 +1,26 @@
+apiVersion: 1
+datasources:
+  - id: 21
+    uid: "UkWq6QxIk"
+    orgId: 1
+    name: "Aruba WLAN Ås"
+    type: "yesoreyeram-infinity-datasource"
+    url: ""
+    basicAuth: false
+    basicAuthUser: ""
+    isDefault: false
+    jsonData:
+      allowedHosts:
+        - "http://sftool.storfollo.locl"
+        - "http://sftool.storfollo.local/aruba-api-proxy/"
+#      apiKeyKey: "UIDARUBA"
+#      apiKeyType: "query"
+#      auth_method: "apiKey"
+      global_queries: []
+      oauthPassThru: false
+      tlsAuthWithCACert: true
+      tlsSkipVerify: false
+    readOnly: false
+#    secureJsonData:
+#      apiKeyValue: "xxxxxxx"
+#      tlsCACert: "xxxxxxx"

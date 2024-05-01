@@ -1,0 +1,35 @@
+logging {
+  level  = "info"
+  format = "logfmt"
+}
+
+local.file_match "logs" {
+  path_targets = [
+    {__path__ = "/var/log/external/syslogng/*.log"},
+  ]
+}
+
+loki.source.file "tmpfiles" {
+  targets    = local.file_match.logs.targets
+  forward_to = [loki.write.local.receiver]
+}
+
+loki.source.syslog "local" {
+  listener {
+    address  = "0.0.0.0:5514"
+    protocol = "udp"
+    labels   = { component = "loki.source.syslog", protocol = "udp"}
+  }
+
+  listener {
+    address  = "0.0.0.0:6514"
+    labels   = { component = "loki.source.syslog", protocol = "tcp" }
+  }
+  forward_to = [loki.write.local.receiver]
+}
+
+loki.write "local" {
+    endpoint {
+        url = "http://loki:3100/loki/api/v1/push"
+    }
+}

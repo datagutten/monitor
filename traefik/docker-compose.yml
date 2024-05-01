@@ -1,0 +1,88 @@
+x-log: &loki-logging
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://loki/loki/api/v1/push"
+        loki-retries: "10"
+        loki-batch-size: "9400"
+
+version: "3"
+services:
+# Traefik https://hub.docker.com/_/traefik
+  traefik:
+    container_name: traefik
+    image: traefik:v3.0
+    pull_policy: always
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    domainname: ${DOMAIN}
+    command:
+      - --api.dashboard=true
+      - --api.insecure=true
+      - --metrics.prometheus=true
+#     EntryPoints
+      - --entrypoints.web.address=:80
+      - --entrypoints.web.forwardedHeaders.trustedIPs=127.0.0.1/30,172.16.0.0/12,192.168.0.0/16,10.0.0.0/8
+      - --entrypoints.web.http.redirections.entryPoint.to=websecure
+      - --entrypoints.web.http.redirections.entryPoint.scheme=https
+      - --entrypoints.websecure.address=:443
+      - --entrypoints.websecure.forwardedHeaders.trustedIPs=127.0.0.1/30,172.16.0.0/12,192.168.0.0/16,10.0.0.0/8
+#     Traefik Settings
+      - --serversTransport.insecureSkipVerify=true
+      - --providers.docker.exposedbydefault=false
+      - --providers.file.directory=/configuration/
+      - --providers.file.watch=true
+      - --providers.docker.network=proxy
+      - --global.sendAnonymousUsage=true
+#     Logging
+      - --log.level=info
+#      - --log.filePath=var/log/traefik/traefik.log
+      - --accesslog=true
+      - --accesslog.filepath=var/log/traefik/access.log
+      - --accessLog.bufferingSize=300 # Configuring a buffer of 100 lines
+      - --accessLog.filters.statusCodes=204-299,400-499,500-599
+#     Lets Encrypt Certificate
+      - --certificatesresolvers.monitor.acme.dnschallenge=true
+      - --certificatesresolvers.monitor.acme.dnschallenge.provider=domeneshop
+      - --certificatesresolvers.monitor.acme.email=${EMAIL}
+      - --certificatesresolvers.monitor.acme.storage=/le/acme.json
+      - --certificatesresolvers.monitor.acme.caserver=https://acme-v02.api.letsencrypt.org/directory
+
+    networks:
+      - proxy
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080 # TODO: Remove this when dashboard is working through proxy
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.dashboard.rule=Host(`traefik.${DOMAIN}`)
+      - traefik.http.routers.dashboard.rule=Host(`${DOMAIN}`) && PathPrefix(`/dashboard`)
+      - traefik.http.routers.dashboard.service=api@internal
+      - traefik.http.routers.dashboard.middlewares=users-auth@file
+      - traefik.http.routers.dashboard.tls=true
+      - traefik.http.routers.dashboard.tls.certresolver=monitor
+      - traefik.http.routers.dashboard.tls.domains[0].main=${DOMAIN}
+      - traefik.http.routers.dashboard.tls.domains[0].sans=*.${DOMAIN}
+      - org.label-schema.group=monitoring
+    volumes:
+      - ./data/le/:/le
+      - ./data/configuration/:/configuration
+      - ./data/users/:/users
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - traefik-logs:/var/log/traefik
+    environment:
+      - TZ=Europe/Oslo
+      - DOMENESHOP_API_SECRET=${DOMENESHOP_API_SECRET}
+      - DOMENESHOP_API_TOKEN=${DOMENESHOP_API_TOKEN}
+    extra_hosts:
+      - host.docker.internal:host-gateway
+#    <<: *loki-logging
+
+networks:
+  proxy:
+    external: true
+volumes:
+  traefik-logs:
+    external: true

@@ -1,0 +1,17 @@
+services:
+  aruba-ap-exporter:
+    container_name: aruba-ap-exporter
+    build: .
+    restart: unless-stopped
+    networks:
+      - monitor-net
+    volumes:
+      - ./src/token:/token
+
+
+#    ports:
+#      - 8000:8000
+
+networks:
+  monitor-net:
+    external: true
