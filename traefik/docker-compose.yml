@@ -71,7 +71,7 @@ services:
       - ./data/configuration/:/configuration
       - ./data/users/:/users
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - traefik-logs:/var/log/traefik
+      - ${DATA_PATH}/traefik-logs:/var/log/traefik
     environment:
       - TZ=Europe/Oslo
       - DOMENESHOP_API_SECRET=${DOMENESHOP_API_SECRET}
@@ -82,7 +82,4 @@ services:
 
 networks:
   proxy:
-    external: true
-volumes:
-  traefik-logs:
     external: true

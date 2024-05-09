@@ -12,6 +12,7 @@ services:
     volumes:
       - ./data/loki/loki-config.yml:/etc/loki/local-config.yaml
       #- loki-data:/tmp/loki/:rw
+      - ${DATA_PATH}/loki:/tmp/loki
     labels:
       - traefik.enable=true
       - traefik.docker.network=proxy
@@ -43,7 +44,7 @@ services:
       - 6514:6514/tcp
     volumes:
       - ./data/alloy:/etc/alloy
-      - syslog:/var/log/external/syslogng:ro
+      - ${DATA_PATH}/syslog:/var/log/external/syslogng:ro
     environment:
       LOKI_HOST: loki:3100
       #REMOTE_WRITE_HOST: mimir:9009
@@ -79,8 +80,8 @@ services:
     volumes:
       - ./data/promtail/promtail-config.yml:/etc/promtail/config.yaml:ro
       - /var/log:/var/log/host/:ro
-      - traefik-logs:/var/log/external/traefik:ro
-      - syslog:/var/log/external/syslogng:ro
+      - ${DATA_PATH}/traefik-logs:/var/log/external/traefik:ro
+      - ${DATA_PATH}/syslog:/var/log/external/syslogng:ro
       - /var/run/docker.sock:/var/run/docker.sock
     command: -config.file=/etc/promtail/config.yaml
     environment:
@@ -89,14 +90,6 @@ services:
       - loki
     networks:
       - monitor-net
-
-volumes:
-  loki-data:
-    external: true
-  traefik-logs:
-    external: true
-  syslog:
-    external: true
 
 networks:
   monitor-net:
