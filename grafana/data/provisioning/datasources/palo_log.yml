@@ -1,0 +1,21 @@
+apiVersion: 1
+datasources:
+  - id: 15
+    uid: "bdimunq5pjojkc"
+    orgId: 1
+    name: "Palo Alto log"
+    type: "yesoreyeram-infinity-datasource"
+    url: ""
+    basicAuth: false
+    basicAuthUser: ""
+    isDefault: false
+    jsonData:
+      allowedHosts:
+        - "http://palo-logparser:5000"
+      global_queries: []
+      oauthPassThru: false
+      tlsAuthWithCACert: true
+      tlsSkipVerify: false
+      customHealthCheckEnabled: true
+      customHealthCheckUrl: "http://palo-logparser:5000"
+#    readOnly: false

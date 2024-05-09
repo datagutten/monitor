@@ -1,0 +1,816 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 4,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "bdimunq5pjojkc"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "6"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 192
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "21"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 187
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Unknown datetime 21"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 304
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Start Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 239
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Generated time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 202
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Action"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 77
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Device name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 126
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Receive Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 245
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Type"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 77
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "To port"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 85
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 23,
+        "w": 23,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "bdimunq5pjojkc"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "json_options": {
+            "columnar": false
+          },
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "json",
+          "url": "http://palo-logparser:5000/TRAFFIC?from=${__from:date:iso}&to=${__to:date:iso}",
+          "url_options": {
+            "data": "",
+            "method": "GET",
+            "params": []
+          }
+        }
+      ],
+      "title": "Traffic log",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "A Slice Differentiator": true,
+              "A Slice Service Type": true,
+              "Action Flags": true,
+              "Action Source": true,
+              "Cluster Name": true,
+              "Container ID": true,
+              "Destination Device Category": true,
+              "Destination Device Model": true,
+              "Destination Device OS Family": true,
+              "Destination Device OS Version": true,
+              "Destination Device Profile": true,
+              "Destination Device Vendor": true,
+              "Destination Dynamic Address Group": true,
+              "Destination External Dynamic List": true,
+              "Destination Hostname": true,
+              "Destination Mac Address": true,
+              "Destination VM UUID": true,
+              "Device Group Hierarchy": true,
+              "Device Group Hierarchy Level 1": true,
+              "Device Group Hierarchy Level 2": true,
+              "Device Group Hierarchy Level 3": true,
+              "Device Group Hierarchy Level 4": true,
+              "Dynamic User Group Name": false,
+              "Empty field 38": true,
+              "Empty field 43": true,
+              "FUTURE_USE 0": true,
+              "FUTURE_USE 21": true,
+              "FUTURE_USE 38": true,
+              "FUTURE_USE 43": true,
+              "Firewall id": true,
+              "Flags": true,
+              "Flow Type": true,
+              "HTTP/2 Connection": true,
+              "High Resolution Timestamp": true,
+              "Host ID": true,
+              "Link Switches": true,
+              "Log Action": true,
+              "Log type": true,
+              "Monitor Tag/IMEI": true,
+              "Offloaded": true,
+              "POD Name": true,
+              "POD Namespace": true,
+              "Packets Received": true,
+              "Packets Sent": true,
+              "Parent Session ID": true,
+              "Parent Start Time": true,
+              "Policy ID": true,
+              "Rule UUID": true,
+              "SCTP Association ID": true,
+              "SCTP Chunks": true,
+              "SCTP Chunks Received": true,
+              "SCTP Chunks Sent": true,
+              "SD-WAN Cluster": true,
+              "SD-WAN Cluster Type": true,
+              "SD-WAN Device Type": true,
+              "SD-WAN Site": true,
+              "Sequence Number": true,
+              "Serial Number": true,
+              "Session Owner": true,
+              "Source Device Category": true,
+              "Source Device Model": true,
+              "Source Device OS Family": true,
+              "Source Device OS Version": true,
+              "Source Device Profile": true,
+              "Source Device Vendor": true,
+              "Source Dynamic Address Group": true,
+              "Source External Dynamic List": true,
+              "Source Hostname": true,
+              "Source Mac Address": true,
+              "Source VM UUID": true,
+              "Start Time": true,
+              "Tunnel ID/IMSI": true,
+              "Tunneled Application": false,
+              "Virtual System Name": true,
+              "Virtual system": true,
+              "XFF Address": true,
+              "vsys": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "A Slice Differentiator": 54,
+              "A Slice Service Type": 55,
+              "Action": 11,
+              "Action Flags": 17,
+              "Action Source": 18,
+              "App Category": 48,
+              "App Characteristic": 49,
+              "App Flap Count": 15,
+              "App Risk": 50,
+              "App Subcategory": 51,
+              "App Technology": 52,
+              "Application": 10,
+              "Application Container": 56,
+              "Application SaaS": 57,
+              "Application Sanctioned State": 58,
+              "Bytes": 14,
+              "Bytes Received": 19,
+              "Bytes Sent": 20,
+              "Category": 21,
+              "Cluster Name": 59,
+              "Container ID": 60,
+              "Destination Country": 22,
+              "Destination Device Category": 61,
+              "Destination Device Model": 62,
+              "Destination Device OS Family": 63,
+              "Destination Device OS Version": 64,
+              "Destination Device Profile": 65,
+              "Destination Device Vendor": 66,
+              "Destination Dynamic Address Group": 67,
+              "Destination External Dynamic List": 68,
+              "Destination Hostname": 69,
+              "Destination Mac Address": 70,
+              "Destination Port": 9,
+              "Destination VM UUID": 71,
+              "Destination Zone": 5,
+              "Destination address": 8,
+              "Destination user": 23,
+              "Device Group Hierarchy Level 1": 72,
+              "Device Group Hierarchy Level 2": 73,
+              "Device Group Hierarchy Level 3": 74,
+              "Device Group Hierarchy Level 4": 75,
+              "Device name": 0,
+              "Dynamic User Group Name": 76,
+              "Elapsed Time": 24,
+              "FUTURE_USE 0": 77,
+              "FUTURE_USE 21": 78,
+              "FUTURE_USE 38": 79,
+              "FUTURE_USE 43": 80,
+              "Firewall id": 53,
+              "Flags": 25,
+              "Flow Type": 26,
+              "Generated time": 27,
+              "HTTP/2 Connection": 81,
+              "High Resolution Timestamp": 82,
+              "Host ID": 83,
+              "IP Protocol": 28,
+              "Inbound Interface": 29,
+              "Link Switches": 84,
+              "Log Action": 30,
+              "Log type": 2,
+              "Monitor Tag/IMEI": 85,
+              "NAT Destination Port": 31,
+              "NAT Source Port": 32,
+              "NAT destination IP": 33,
+              "NAT source IP": 34,
+              "Offloaded": 86,
+              "Outbound Interface": 35,
+              "POD Name": 87,
+              "POD Namespace": 88,
+              "Packets": 36,
+              "Packets Received": 37,
+              "Packets Sent": 38,
+              "Parent Session ID": 89,
+              "Parent Start Time": 90,
+              "Policy ID": 91,
+              "Receive Time": 1,
+              "Repeat Count": 39,
+              "Rule": 12,
+              "Rule UUID": 40,
+              "SCTP Association ID": 92,
+              "SCTP Chunks": 93,
+              "SCTP Chunks Received": 94,
+              "SCTP Chunks Sent": 95,
+              "SD-WAN Cluster": 96,
+              "SD-WAN Cluster Type": 97,
+              "SD-WAN Device Type": 98,
+              "SD-WAN Site": 99,
+              "Sequence Number": 41,
+              "Serial Number": 42,
+              "Session End Reason": 13,
+              "Session ID": 43,
+              "Session Owner": 100,
+              "Source Country": 44,
+              "Source Device Category": 101,
+              "Source Device Model": 102,
+              "Source Device OS Family": 103,
+              "Source Device OS Version": 104,
+              "Source Device Profile": 105,
+              "Source Device Vendor": 106,
+              "Source Dynamic Address Group": 107,
+              "Source External Dynamic List": 108,
+              "Source Hostname": 109,
+              "Source Mac Address": 110,
+              "Source Port": 45,
+              "Source VM UUID": 111,
+              "Source Zone": 4,
+              "Source address": 6,
+              "Source user": 7,
+              "Start Time": 16,
+              "Threat/Content Type": 3,
+              "Tunnel ID/IMSI": 112,
+              "Tunnel Type": 113,
+              "Tunneled Application": 114,
+              "Virtual System Name": 46,
+              "Virtual system": 47,
+              "XFF Address": 115
+            },
+            "renameByName": {
+              "Action": "",
+              "Destination Port": "To port",
+              "Destination Zone": "To zone",
+              "Destination address": "Destination",
+              "Device name": "Firewall",
+              "Log type": "",
+              "Source Zone": "From zone",
+              "Source address": "Source",
+              "Start Time": "",
+              "Threat/Content Type": "Type"
+            }
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "bdimunq5pjojkc"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "informational": {
+                  "color": "green",
+                  "index": 0
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Generated time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 202
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Receive Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 244
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Device Name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 138
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Type"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 95
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Object"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 171
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Severity"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Firewall"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 125
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Event"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 198
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 23,
+        "w": 23,
+        "x": 0,
+        "y": 23
+      },
+      "id": 3,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "bdimunq5pjojkc"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "json_options": {
+            "columnar": false
+          },
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "json",
+          "url": "http://palo-logparser:5000/SYSTEM?from=${__from:date:iso}&to=${__to:date:iso}",
+          "url_options": {
+            "data": "",
+            "method": "GET",
+            "params": []
+          }
+        }
+      ],
+      "title": "System log",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "0": true,
+              "48": true,
+              "49": true,
+              "50": true,
+              "54": true,
+              "55": true,
+              "56": true,
+              "57": true,
+              "58": true,
+              "59": true,
+              "60": true,
+              "61": true,
+              "62": true,
+              "63": true,
+              "64": true,
+              "66": true,
+              "67": true,
+              "68": true,
+              "69": true,
+              "70": true,
+              "71": true,
+              "72": true,
+              "73": true,
+              "74": true,
+              "75": true,
+              "76": true,
+              "77": true,
+              "78": true,
+              "79": true,
+              "80": true,
+              "81": true,
+              "82": true,
+              "83": true,
+              "84": true,
+              "85": true,
+              "86": true,
+              "87": true,
+              "88": true,
+              "89": true,
+              "90": true,
+              "91": true,
+              "92": true,
+              "93": true,
+              "94": true,
+              "95": true,
+              "96": true,
+              "97": true,
+              "98": true,
+              "99": true,
+              "100": true,
+              "101": true,
+              "102": true,
+              "103": true,
+              "104": true,
+              "105": true,
+              "106": true,
+              "107": true,
+              "108": true,
+              "109": true,
+              "110": true,
+              "111": true,
+              "112": true,
+              "113": true,
+              "114": true,
+              "116": true,
+              "Action Flags": true,
+              "Device Group Hierarchy": true,
+              "Device Group Hierarchy Level 1": true,
+              "Device Group Hierarchy Level 2": true,
+              "Device Group Hierarchy Level 3": true,
+              "Device Group Hierarchy Level 4": true,
+              "Empty field 38": true,
+              "Empty field 43": true,
+              "FUTURE_USE": true,
+              "FUTURE_USE 0": true,
+              "FUTURE_USE 10": true,
+              "FUTURE_USE 11": true,
+              "Firewall id": true,
+              "Flags": true,
+              "Flow Type": true,
+              "Generated time": true,
+              "High Resolution Timestamp": true,
+              "Log type": true,
+              "Module": true,
+              "Sequence Number": true,
+              "Serial Number": true,
+              "Virtual System": true,
+              "Virtual System Name": true,
+              "vsys": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Action Flags": 9,
+              "Description": 7,
+              "Device Group Hierarchy Level 1": 15,
+              "Device Group Hierarchy Level 2": 16,
+              "Device Group Hierarchy Level 3": 17,
+              "Device Group Hierarchy Level 4": 18,
+              "Device Name": 0,
+              "Event ID": 5,
+              "FUTURE_USE": 22,
+              "FUTURE_USE 0": 24,
+              "FUTURE_USE 10": 19,
+              "FUTURE_USE 11": 20,
+              "Firewall id": 14,
+              "Generated time": 10,
+              "High Resolution Timestamp": 23,
+              "Log type": 8,
+              "Module": 3,
+              "Object": 6,
+              "Receive Time": 1,
+              "Sequence Number": 11,
+              "Serial Number": 12,
+              "Severity": 4,
+              "Threat/Content Type": 2,
+              "Virtual System": 21,
+              "Virtual System Name": 13
+            },
+            "renameByName": {
+              "Device Name": "Firewall",
+              "Device name": "Device",
+              "Event ID": "Event",
+              "FUTURE_USE 11": "",
+              "Module": "",
+              "Object": "",
+              "Receive Time": "",
+              "Start Time": "",
+              "Threat/Content Type": "Type"
+            }
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Firewall logs",
+  "uid": "edilm9717iznkc",
+  "version": 4,
+  "weekStart": ""
+}
