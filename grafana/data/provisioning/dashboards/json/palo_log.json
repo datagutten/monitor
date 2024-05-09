@@ -217,7 +217,7 @@
           "root_selector": "",
           "source": "url",
           "type": "json",
-          "url": "http://palo-logparser:5000/TRAFFIC?from=${__from:date:iso}&to=${__to:date:iso}",
+          "url": "http://palo-logparser/TRAFFIC?from=${__from:date:iso}&to=${__to:date:iso}&host=${palo_hosts}",
           "url_options": {
             "data": "",
             "method": "GET",
@@ -630,7 +630,7 @@
           "root_selector": "",
           "source": "url",
           "type": "json",
-          "url": "http://palo-logparser:5000/SYSTEM?from=${__from:date:iso}&to=${__to:date:iso}",
+          "url": "http://palo-logparser/SYSTEM?from=${__from:date:iso}&to=${__to:date:iso}&host=${palo_hosts}",
           "url_options": {
             "data": "",
             "method": "GET",
@@ -790,7 +790,50 @@
   "schemaVersion": 39,
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "pa-vest",
+          "value": "pa-vest"
+        },
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "bdimunq5pjojkc"
+        },
+        "definition": "Palo Alto log- (infinity) json",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Hosts",
+        "multi": false,
+        "name": "palo_hosts",
+        "options": [],
+        "query": {
+          "infinityQuery": {
+            "columns": [],
+            "filters": [],
+            "format": "table",
+            "parser": "backend",
+            "refId": "variable",
+            "root_selector": "",
+            "source": "url",
+            "type": "json",
+            "url": "http://palo-logparser/hosts?from=${__from:date:iso}&to=${__to:date:iso}",
+            "url_options": {
+              "data": "",
+              "method": "GET"
+            }
+          },
+          "query": "",
+          "queryType": "infinity"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
   },
   "time": {
     "from": "now-1h",
@@ -811,6 +854,6 @@
   "timezone": "browser",
   "title": "Firewall logs",
   "uid": "edilm9717iznkc",
-  "version": 4,
+  "version": 5,
   "weekStart": ""
 }

@@ -11,11 +11,11 @@ datasources:
     isDefault: false
     jsonData:
       allowedHosts:
-        - "http://palo-logparser:5000"
+        - "http://palo-logparser"
       global_queries: []
       oauthPassThru: false
       tlsAuthWithCACert: true
       tlsSkipVerify: false
       customHealthCheckEnabled: true
-      customHealthCheckUrl: "http://palo-logparser:5000"
+      customHealthCheckUrl: "http://palo-logparser/hosts"
 #    readOnly: false
