@@ -7,3 +7,4 @@ echo "DOMAIN=$1">prometheus/.env
 
 echo "DATA_PATH=$2">>loki/.env
 echo "DATA_PATH=$2">syslogng/.env
+echo "DATA_PATH=$2">>prometheus/.env

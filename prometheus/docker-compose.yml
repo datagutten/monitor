@@ -10,6 +10,7 @@ version: "3"
 services:
 # Prometheus https://hub.docker.com/r/prom/prometheus
   prometheus:
+    user: "1000:1000"
     container_name: prometheus
     image: prom/prometheus
     pull_policy: always
@@ -37,7 +38,7 @@ services:
       - org.label-schema.group=monitoring
     volumes:
       - ./data/prometheus.yml:/etc/prometheus/prometheus.yml
-      - prometheus-data:/prometheus
+      - ${DATA_PATH}/prometheus:/prometheus
     environment:
       - TZ=Europe/Oslo
 #    <<: *loki-logging
@@ -75,5 +76,3 @@ networks:
     external: true
   monitor-net:
     external: true
-volumes:
-  prometheus-data:
