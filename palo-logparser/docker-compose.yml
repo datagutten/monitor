@@ -1,0 +1,13 @@
+services:
+  palo-logparser:
+    container_name: palo-logparser
+    build: https://github.com/datagutten/palo-alto-logparser.git
+    restart: unless-stopped
+    networks:
+    - monitor-net
+    environment:
+    - LOKI_URL=http://loki:3100
+
+networks:
+  monitor-net:
+    external: true
