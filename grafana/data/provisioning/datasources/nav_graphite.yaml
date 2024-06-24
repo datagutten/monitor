@@ -29,7 +29,7 @@ datasources:
 
   - name: Graphite NAV Ås core
     type: graphite
-    access: direct
+    access: proxy
     uid: NAV_graphite_Aas_core
-    url: http://10.1.110.203:8000
+    url: http://nav_core.as.kommune.no:8000
 
