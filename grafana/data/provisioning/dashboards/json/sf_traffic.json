@@ -327,7 +327,7 @@
           },
           "refCount": 0,
           "refId": "A",
-          "target": "alias(scaleToSeconds(nonNegativeDerivative(scale(nav.devices.pa-vm1_as-admin_no.ports.ethernet1_1.ifInOctets,8)),1),\"In\")",
+          "target": "alias(scaleToSeconds(nonNegativeDerivative(scale(nav.devices.10_214_188_2.ports.ethernet1_1.ifInOctets,8)),1),\"In\")",
           "textEditor": true
         },
         {
@@ -338,7 +338,7 @@
           "hide": false,
           "refCount": 0,
           "refId": "B",
-          "target": "alias(scaleToSeconds(nonNegativeDerivative(scale(nav.devices.pa-vm1_as-admin_no.ports.ethernet1_1.ifOutOctets,8)),1),\"Out\")",
+          "target": "alias(scaleToSeconds(nonNegativeDerivative(scale(nav.devices.10_214_188_2.ports.ethernet1_1.ifOutOctets,8)),1),\"Out\")",
           "textEditor": true
         }
       ],
