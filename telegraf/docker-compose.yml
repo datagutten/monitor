@@ -1,0 +1,16 @@
+services:
+  telegraf:
+    container_name: telegraf
+    image: telegraf
+    pull_policy: always
+    restart: unless-stopped
+    networks:
+    - monitor-net
+    volumes:
+    - ./data:/etc/telegraf
+    environment:
+    - MIBDIRS=/etc/telegraf/mibs
+
+networks:
+  monitor-net:
+    external: true
