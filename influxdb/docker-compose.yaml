@@ -1,0 +1,36 @@
+services:
+# Influx
+  influxdb:
+    image: influxdb:latest
+    pull_policy: always
+    restart: unless-stopped
+    container_name: influxdb
+    networks:
+      - proxy
+      - monitor-net
+    volumes:
+      # Mount for influxdb data directory and configuration
+      - ./data/influxdb:/var/lib/influxdb2:rw
+      - ./data/config/:/etc/influxdb2:rw
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proxy
+      #- traefik.http.routers.influxdb.rule=Host(`service.${DOMAIN}`) && PathPrefix(`/influxdb`)
+      - traefik.http.routers.influxdb.rule=Host(`influxdb.${DOMAIN}`)
+      #- traefik.http.routers.influxdb.middlewares=users-auth@file
+      - traefik.http.routers.influxdb.tls=true
+      - traefik.http.routers.influxdb.tls.certresolver=monitor
+      - org.label-schema.group=monitoring
+    environment:
+      - TZ=Europe/Oslo
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${ADMIN_PASSWORD}
+      - DOCKER_INFLUXDB_INIT_ORG=storfollo
+      - DOCKER_INFLUXDB_INIT_BUCKET=monitoring
+
+networks:
+  proxy:
+    external: true
+  monitor-net:
+    external: true
