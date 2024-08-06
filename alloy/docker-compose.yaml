@@ -1,0 +1,40 @@
+services:
+  alloy:
+    image: grafana/alloy
+    pull_policy: always
+    restart: on-failure
+    ports:
+      - 12345:12345/tcp
+      - 5514:5514/udp
+      - 6514:6514/tcp
+    volumes:
+      - ./data/alloy:/etc/alloy
+      - syslog:/var/log/external/syslogng:ro
+    environment:
+      LOKI_HOST: loki:3100
+    command:
+      - run
+      - /etc/alloy/config.alloy
+      - --storage.path=/var/lib/alloy/data
+      - --server.http.listen-addr=0.0.0.0:12345
+      - --stability.level=experimental # Enable all functionality
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proxy
+      - traefik.http.routers.alloy.rule=Host(`${DOMAIN}`) && PathPrefix(`/alloy`)
+      - traefik.http.routers.alloy.middlewares=compress@file
+      - traefik.http.routers.alloy.tls=true
+      - traefik.http.routers.alloy.tls.certresolver=monitor
+    networks:
+      - proxy
+      - monitor-net
+
+volumes:
+  syslog:
+    external: true
+
+networks:
+  monitor-net:
+    external: true
+  proxy:
+    external: true

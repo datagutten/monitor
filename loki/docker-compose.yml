@@ -34,44 +34,6 @@ services:
       - proxy
       - monitor-net
 
-  alloy:
-    image: grafana/alloy
-    pull_policy: always
-    restart: on-failure
-    ports:
-      - 12345:12345/tcp
-      - 5514:5514/udp
-      - 6514:6514/tcp
-    volumes:
-      - ./data/alloy:/etc/alloy
-      - ${DATA_PATH}/syslog:/var/log/external/syslogng:ro
-    environment:
-      LOKI_HOST: loki:3100
-      #REMOTE_WRITE_HOST: mimir:9009
-      #TEMPO_HOST: tempo:4317
-      #PYROSCOPE_HOST: pyroscope:4040
-    depends_on:
-      - loki
-      #- mimir
-      #- tempo
-      #- pyroscope
-    command:
-      - run
-      - /etc/alloy/config.alloy
-      - --storage.path=/var/lib/alloy/data
-      - --server.http.listen-addr=0.0.0.0:12345
-      - --stability.level=experimental # Enable all functionality
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=proxy
-      - traefik.http.routers.alloy.rule=Host(`${DOMAIN}`) && PathPrefix(`/alloy`)
-      - traefik.http.routers.alloy.middlewares=compress@file
-      - traefik.http.routers.alloy.tls=true
-      - traefik.http.routers.alloy.tls.certresolver=monitor
-    networks:
-      - proxy
-      - monitor-net
-
   # https://grafana.com/docs/loki/latest/send-data/promtail/
   promtail:
     image: grafana/promtail
