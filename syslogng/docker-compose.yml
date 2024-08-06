@@ -1,4 +1,3 @@
-version: "3"
 services:
   syslog-ng:
     image: lscr.io/linuxserver/syslog-ng:latest

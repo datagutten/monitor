@@ -6,7 +6,6 @@ x-log: &loki-logging
         loki-retries: "10"
         loki-batch-size: "9400"
 
-version: "3"
 services:
 # Prometheus https://hub.docker.com/r/prom/prometheus
   prometheus:
