@@ -1,17 +1,8 @@
-x-log: &loki-logging
-    logging:
-      driver: loki
-      options:
-        loki-url: "http://loki/loki/api/v1/push"
-        loki-retries: "10"
-        loki-batch-size: "9400"
-
-version: "3"
 services:
 # Traefik https://hub.docker.com/_/traefik
   traefik:
     container_name: traefik
-    image: traefik:v3.0
+    image: traefik:latest
     pull_policy: always
     restart: unless-stopped
     security_opt:
@@ -78,7 +69,6 @@ services:
       - DOMENESHOP_API_TOKEN=${DOMENESHOP_API_TOKEN}
     extra_hosts:
       - host.docker.internal:host-gateway
-#    <<: *loki-logging
 
 networks:
   proxy:
