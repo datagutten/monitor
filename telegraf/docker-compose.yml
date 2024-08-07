@@ -7,9 +7,12 @@ services:
     networks:
     - monitor-net
     volumes:
-    - ./data:/etc/telegraf
-    environment:
-    - MIBDIRS=/etc/telegraf/mibs
+    - ./data:/etc/telegraf/telegraf.d
+    - ./data/mibs:/usr/share/snmp/mibs:ro
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+    env_file:
+    - ./.env
+
 
 networks:
   monitor-net:
