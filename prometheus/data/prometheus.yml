@@ -20,6 +20,14 @@ scrape_configs:
       - target_label: __address__
         replacement: hpilo_generic:9416  # hpilo exporter.
 
+  - job_name: 'ups'
+    metrics_path: /metrics
+    scrape_interval: 5m
+    scrape_timeout: 30s
+    static_configs:
+    - targets:
+        - upsmanager:8000
+
   - job_name: 'panos_exporter'
     metrics_path: /panos
     scrape_timeout: 1m
