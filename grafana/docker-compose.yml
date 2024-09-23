@@ -34,6 +34,7 @@ services:
       - ./data/provisioning:/var/lib/grafana/provisioning
     extra_hosts:
       - "nav.as.kommune.no:10.214.118.80"
+      - "nav-core.as.kommune.no:10.1.110.203"
       - "nav.frogn.kommune.no:10.100.252.72"
       - "nav.vestby.kommune.no:10.211.3.223"
       - "sftool.storfollo.local:10.100.252.65"
