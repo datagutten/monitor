@@ -24,14 +24,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 15,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "NAV_API_Vestby"
+        "default": false,
+        "type": "graphite",
+        "uid": "NAV_graphite_Vestby"
       },
       "fieldConfig": {
         "defaults": {
@@ -39,11 +39,13 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -52,6 +54,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -108,38 +111,13 @@
       "pluginVersion": "9.2.5",
       "targets": [
         {
-          "columns": [
-            {
-              "selector": "Time",
-              "text": "",
-              "type": "timestamp"
-            },
-            {
-              "selector": "Temperature",
-              "text": "",
-              "type": "number"
-            }
-          ],
-          "csv_options": {
-            "columns": "Desc,Time,Temperature"
-          },
           "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "NAV_API_Vestby"
+            "type": "graphite",
+            "uid": "NAV_graphite_Vestby"
           },
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "parser": "backend",
+          "refCount": 0,
           "refId": "A",
-          "root_selector": "",
-          "source": "url",
-          "type": "csv",
-          "url": "http://nav.vestby.kommune.no:8000/render?template=nav&width=480&height=250&target=alias%28nav.devices.10_176_2_201.sensors.CMCIII-HUM_Temperature_Value%2C+%22CMCIII-HUM%3A+Temperature%22%29&vtitle=celsius&from=-1day&until=now&format=csv",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
+          "target": "nav.devices.10_176_2_201.sensors.CMCIII-HUM_Temperature_Value"
         }
       ],
       "title": "Temperatur serverrack Vestby",
@@ -147,8 +125,9 @@
     },
     {
       "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "NAV_API_Vestby"
+        "default": false,
+        "type": "graphite",
+        "uid": "NAV_graphite_Vestby"
       },
       "fieldConfig": {
         "defaults": {
@@ -156,11 +135,13 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -169,6 +150,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -225,38 +207,14 @@
       "pluginVersion": "9.2.5",
       "targets": [
         {
-          "columns": [
-            {
-              "selector": "Time",
-              "text": "",
-              "type": "timestamp"
-            },
-            {
-              "selector": "Temperature",
-              "text": "",
-              "type": "number"
-            }
-          ],
-          "csv_options": {
-            "columns": "Desc,Time,Temperature"
-          },
           "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "NAV_API_Vestby"
+            "type": "graphite",
+            "uid": "NAV_graphite_Vestby"
           },
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "parser": "backend",
+          "refCount": 0,
           "refId": "A",
-          "root_selector": "",
-          "source": "url",
-          "type": "csv",
-          "url": "http://nav.vestby.kommune.no:8000/render?target=alias%28nav.devices.10_176_2_201.sensors.CMCIII-HUM_Humidity_Value%2C+%22CMCIII-HUM%3A+Temperature%22%29&vtitle=celsius&from=-1day&until=now&format=csv",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
+          "target": "nav.devices.10_176_2_201.sensors.CMCIII-HUM_Humidity_Value",
+          "textEditor": true
         }
       ],
       "title": "Fuktighet serverrack Vestby",
@@ -273,11 +231,13 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -286,6 +246,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -378,11 +339,13 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -391,6 +354,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -481,11 +445,13 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -494,6 +460,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -585,11 +552,13 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -598,6 +567,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -668,20 +638,20 @@
       "type": "timeseries"
     }
   ],
-  "schemaVersion": 37,
-  "style": "dark",
+  "refresh": "",
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Temperatur og fuktighet serverrom",
   "uid": "NSGtVZzIz",
-  "version": 14,
+  "version": 1,
   "weekStart": ""
 }
