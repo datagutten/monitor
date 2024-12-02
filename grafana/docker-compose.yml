@@ -30,7 +30,7 @@ services:
       - GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource
       - TZ=Europe/Oslo
     volumes:
-      - ${DATA_PATH}/grafana:/var/lib/grafana
+      - ./data/grafana-data:/var/lib/grafana
       - ./data/provisioning:/var/lib/grafana/provisioning
     extra_hosts:
       - "nav.as.kommune.no:10.214.118.80"
