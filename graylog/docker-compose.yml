@@ -50,7 +50,7 @@ services:
       - traefik.docker.network=proxy
       - traefik.http.routers.graylog.rule=Host(`graylog.${DOMAIN}`)
       - traefik.http.routers.graylog.middlewares=compress@file
-#      - traefik.http.routers.graylog.tls=true
+      - traefik.http.routers.graylog.tls=true
 #      - traefik.http.routers.graylog.tls.certresolver=monitor
       - traefik.http.services.graylog.loadbalancer.server.port=9000
 #      - traefik.http.routers.graylog.tls.domains[0].main=storfollo.no
@@ -86,7 +86,9 @@ services:
       # GELF UDP
       - 12201:12201/udp
       # Palo Alto
-      - "5555-5559:5555-5559"
+      #- "5555-5559:5555-5559"
+      - 5556:5556
+      - 5557-5558:5557-5558/udp
 
 networks:
   graylog:
