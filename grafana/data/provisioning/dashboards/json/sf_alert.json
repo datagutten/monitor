@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 14,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -68,6 +67,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -75,9 +75,11 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "11.1.3",
       "targets": [
         {
           "columns": [
@@ -117,99 +119,6 @@
         }
       ],
       "title": "Vestby",
-      "transformations": [],
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "NAV_API_Frogn"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 1
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 3,
-        "x": 10,
-        "y": 0
-      },
-      "id": 11,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.2.5",
-      "targets": [
-        {
-          "columns": [
-            {
-              "selector": "alert_type.description",
-              "text": "Type",
-              "type": "string"
-            }
-          ],
-          "computed_columns": [
-            {
-              "selector": "",
-              "text": "",
-              "type": "string"
-            }
-          ],
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "NAV_API_Frogn"
-          },
-          "filterExpression": "Type==\"Box declared down.\"",
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "parser": "backend",
-          "refId": "A",
-          "root_selector": "results",
-          "source": "url",
-          "summarizeBy": "",
-          "summarizeExpression": "count(Type)",
-          "type": "json",
-          "url": "http://nav.frogn.kommune.no/api/1/alert/",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
-        }
-      ],
-      "title": "Frogn",
-      "transformations": [],
       "type": "stat"
     },
     {
@@ -243,7 +152,7 @@
       "gridPos": {
         "h": 8,
         "w": 3,
-        "x": 19,
+        "x": 11,
         "y": 0
       },
       "id": 10,
@@ -252,6 +161,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -259,9 +169,11 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "11.1.3",
       "targets": [
         {
           "columns": [
@@ -301,7 +213,100 @@
         }
       ],
       "title": "Ås",
-      "transformations": [],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "NAV_API_Frogn"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 3,
+        "x": 18,
+        "y": 0
+      },
+      "id": 11,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "alert_type.description",
+              "text": "Type",
+              "type": "string"
+            }
+          ],
+          "computed_columns": [
+            {
+              "selector": "",
+              "text": "",
+              "type": "string"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "NAV_API_Frogn"
+          },
+          "filterExpression": "Type==\"Box declared down.\"",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "results",
+          "source": "url",
+          "summarizeBy": "",
+          "summarizeExpression": "count(Type)",
+          "type": "json",
+          "url": "http://nav.frogn.kommune.no/api/1/alert/",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Frogn",
       "type": "stat"
     },
     {
@@ -316,7 +321,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "mappings": [],
@@ -337,14 +344,16 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 14,
+        "h": 9,
         "w": 8,
         "x": 0,
         "y": 8
       },
       "id": 2,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -359,7 +368,7 @@
           }
         ]
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "11.1.3",
       "targets": [
         {
           "columns": [
@@ -407,7 +416,7 @@
     {
       "datasource": {
         "type": "yesoreyeram-infinity-datasource",
-        "uid": "NAV_API_Frogn"
+        "uid": "NAV_API_Aas"
       },
       "fieldConfig": {
         "defaults": {
@@ -416,7 +425,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "mappings": [],
@@ -437,14 +448,16 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 14,
+        "h": 9,
         "w": 8,
         "x": 8,
         "y": 8
       },
-      "id": 5,
+      "id": 8,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -459,7 +472,111 @@
           }
         ]
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "subject",
+              "text": "Device",
+              "type": "string"
+            },
+            {
+              "selector": "alert_type.description",
+              "text": "Type",
+              "type": "string"
+            },
+            {
+              "selector": "start_time",
+              "text": "Start time",
+              "timestampFormat": "2006-01-02T15:04:05Z07:00",
+              "type": "timestamp"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "NAV_API_Aas"
+          },
+          "filterExpression": "Type==\"Box declared down.\"",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "results",
+          "source": "url",
+          "type": "json",
+          "url": "http://nav.as.kommune.no/api/1/alert/",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Alerts Ås",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "NAV_API_Frogn"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 16,
+        "y": 8
+      },
+      "id": 5,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "Alert type"
+          }
+        ]
+      },
+      "pluginVersion": "11.1.3",
       "targets": [
         {
           "columns": [
@@ -506,18 +623,14 @@
     },
     {
       "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "NAV_API_Aas"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
-          },
-          "custom": {
-            "align": "auto",
-            "displayMode": "auto",
-            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -528,86 +641,72 @@
                 "value": null
               },
               {
+                "color": "blue",
+                "value": 0
+              },
+              {
+                "color": "green",
+                "value": 18
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 25
               }
             ]
-          }
+          },
+          "unit": "celsius"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 14,
-        "w": 8,
-        "x": 16,
-        "y": 8
+        "h": 3,
+        "w": 2,
+        "x": 0,
+        "y": 17
       },
-      "id": 8,
+      "id": 12,
       "options": {
-        "footer": {
-          "fields": "",
-          "reducer": [
-            "sum"
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
           ],
-          "show": false
+          "fields": "",
+          "values": false
         },
-        "showHeader": true,
-        "sortBy": [
-          {
-            "desc": false,
-            "displayName": "Alert type"
-          }
-        ]
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "11.1.3",
       "targets": [
         {
-          "columns": [
-            {
-              "selector": "subject",
-              "text": "Device",
-              "type": "string"
-            },
-            {
-              "selector": "alert_type.description",
-              "text": "Type",
-              "type": "string"
-            },
-            {
-              "selector": "start_time",
-              "text": "Start time",
-              "timestampFormat": "2006-01-02T15:04:05Z07:00",
-              "type": "timestamp"
-            }
-          ],
-          "computed_columns": [],
           "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "NAV_API_Aas"
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
           },
-          "filterExpression": "Type==\"Box declared down.\"",
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "parser": "backend",
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "airthings_temperature_celsius{device_name=\"Kveldroveien 9 plass Anders B\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
           "refId": "A",
-          "root_selector": "results",
-          "source": "url",
-          "type": "json",
-          "url": "http://nav.as.kommune.no/api/1/alert/",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
+          "useBackend": false
         }
       ],
-      "title": "Alerts Ås",
-      "type": "table"
+      "title": "Temperatur",
+      "type": "stat"
     }
   ],
   "refresh": "15m",
-  "schemaVersion": 37,
-  "style": "dark",
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": []
