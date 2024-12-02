@@ -8,6 +8,7 @@ services:
     networks:
       - proxy
       - monitor-net
+      - graylog
     labels:
       - traefik.enable=true
       - traefik.docker.network=proxy
@@ -43,6 +44,8 @@ networks:
   proxy:
     external: true
   monitor-net:
+    external: true
+  graylog:
     external: true
 
 
