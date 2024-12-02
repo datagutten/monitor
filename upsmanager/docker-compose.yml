@@ -10,6 +10,7 @@ services:
     - traefik.enable=true
     - traefik.docker.network=proxy
     - traefik.http.routers.upsmanager.rule=Host(`${DOMAIN}`) && PathPrefix(`/upsmanager`) && !PathPrefix(`/upsmanager/static`)
+    - traefik.http.routers.upsmanager2.rule=Host(`upsmanager.${DOMAIN}`) && !PathPrefix(`/static`)
     - traefik.http.routers.upsmanager.middlewares=compress@file,upsmanager-strip
     - traefik.http.routers.upsmanager.tls=true
     - traefik.http.routers.upsmanager.tls.certresolver=monitor
