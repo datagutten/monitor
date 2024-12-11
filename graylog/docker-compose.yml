@@ -4,7 +4,7 @@ services:
     image: mongo:6.0.14
     pull_policy: always
     volumes:
-      - ${DATA_PATH}/mongo_data:/data/db
+      - ${DATA_PATH}/graylog/mongo_data:/data/db
     restart: "on-failure"
     networks:
       - graylog
@@ -14,7 +14,7 @@ services:
     image: opensearchproject/opensearch:2.12.0
     pull_policy: always
     volumes:
-      - ${DATA_PATH}/os_data:/usr/share/opensearch/data
+      - ${DATA_PATH}/graylog/os_data:/usr/share/opensearch/data
     environment:
       - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g"
       - "bootstrap.memory_lock=true"
@@ -57,7 +57,7 @@ services:
 #      - traefik.http.routers.graylog.tls.domains[0].sans=*.storfollo.no
 
     volumes:
-      - ${DATA_PATH}/graylog_data:/usr/share/graylog/data
+      - ${DATA_PATH}/graylog/graylog_data:/usr/share/graylog/data
       # - ./plugin:/usr/share/graylog/plugin
     environment:
       - GRAYLOG_ELASTICSEARCH_HOSTS=http://opensearch:9200
