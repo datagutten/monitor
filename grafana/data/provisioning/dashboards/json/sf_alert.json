@@ -1129,6 +1129,6 @@
   "timezone": "utc",
   "title": "Nettverksovervåking VÅF",
   "uid": "sf_alert",
-  "version": 3,
+  "version": 4,
   "weekStart": "monday"
 }
